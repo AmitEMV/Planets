@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Planets - Explore the Universe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cosmic Planets</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#planets">Planets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Discover the Wonders of Our Universe</h1>
+                    <p class="lead">Explore breathtaking planets and celestial bodies in our interactive gallery.</p>
+                    <a href="#planets" class="btn btn-primary btn-lg">Explore Now</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/star and planet.jpeg" alt="Star and Planet" class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Planet Section -->
+    <section id="planets" class="featured-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Featured Planets</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="planet-card" data-planet="colorful">
+                        <img src="images/colourful planet.jpeg" alt="Colorful Planet" class="img-fluid">
+                        <h3>Chromaria</h3>
+                        <p>A vibrant gas giant with swirling multicolored clouds.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="planet-card" data-planet="rocky">
+                        <img src="images/rocky planet.jpeg" alt="Rocky Planet" class="img-fluid">
+                        <h3>Terranova</h3>
+                        <p>A rocky terrestrial planet with vast mountain ranges.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="planet-card" data-planet="sandy">
+                        <img src="images/sandy planet.jpeg" alt="Sandy Planet" class="img-fluid">
+                        <h3>Aridus</h3>
+                        <p>A desert planet with vast sand dunes and minimal water.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planet Carousel Section -->
+    <section id="gallery" class="carousel-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Planet Gallery</h2>
+            <div id="planetCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#planetCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#planetCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#planetCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/planet with rings and moon.jpeg" class="d-block w-100" alt="Planet with Rings">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Annularis</h3>
+                            <p>A magnificent ringed planet with multiple moons.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/moon from a planet.jpeg" class="d-block w-100" alt="Moon from Planet">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Lunaris</h3>
+                            <p>View of a moon from the surface of its host planet.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/star and planet.jpeg" class="d-block w-100" alt="Star and Planet">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Solaris</h3>
+                            <p>A planet orbiting close to its parent star.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#planetCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#planetCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planet Details Modal -->
+    <div class="modal fade" id="planetModal" tabindex="-1" aria-labelledby="planetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="planetModalLabel">Planet Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalImage" src="" alt="Planet" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modalTitle"></h3>
+                            <div id="modalDescription"></div>
+                            <div id="modalStats" class="mt-3">
+                                <p><strong>Diameter:</strong> <span id="modalDiameter"></span></p>
+                                <p><strong>Distance from Sun:</strong> <span id="modalDistance"></span></p>
+                                <p><strong>Temperature:</strong> <span id="modalTemperature"></span></p>
+                                <p><strong>Atmosphere:</strong> <span id="modalAtmosphere"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Cosmic Planets</h4>
+                    <p>Exploring the wonders of our universe, one planet at a time.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#planets">Planets</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Connect</h4>
+                    <p>Stay updated with the latest discoveries and images.</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 Cosmic Planets. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="index.js"></script>
+</body>
+</html>

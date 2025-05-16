@@ -1,0 +1,10 @@
+{
+  "name": "Planets",
+  "version": "1.0.0",
+  "description": "Check the readme.md file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true
+}
