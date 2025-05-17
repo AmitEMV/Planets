@@ -62,18 +62,21 @@ const planetData = {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize planet cards click events
     initPlanetCards();
-    
+
     // Initialize carousel items click events
     initCarouselItems();
-    
+
     // Add animation classes to elements as they scroll into view
     initScrollAnimations();
+
+    // Initialize theme toggle
+    initThemeToggle();
 });
 
 // Initialize planet cards click events
 function initPlanetCards() {
     const planetCards = document.querySelectorAll('.planet-card');
-    
+
     planetCards.forEach(card => {
         card.addEventListener('click', function() {
             const planetType = this.getAttribute('data-planet');
@@ -85,11 +88,11 @@ function initPlanetCards() {
 // Initialize carousel items click events
 function initCarouselItems() {
     const carouselItems = document.querySelectorAll('.carousel-item');
-    
+
     carouselItems.forEach((item, index) => {
         item.addEventListener('click', function() {
             let planetType;
-            
+
             // Determine which planet based on carousel index
             switch(index) {
                 case 0:
@@ -104,10 +107,10 @@ function initCarouselItems() {
                 default:
                     planetType = 'colorful';
             }
-            
+
             openPlanetModal(planetType);
         });
-        
+
         // Add cursor pointer to indicate clickable
         item.style.cursor = 'pointer';
     });
@@ -116,9 +119,9 @@ function initCarouselItems() {
 // Open the planet modal with the specified planet data
 function openPlanetModal(planetType) {
     const planet = planetData[planetType];
-    
+
     if (!planet) return;
-    
+
     // Set modal content
     document.getElementById('modalImage').src = planet.image;
     document.getElementById('modalTitle').textContent = planet.name;
@@ -127,7 +130,7 @@ function openPlanetModal(planetType) {
     document.getElementById('modalDistance').textContent = planet.distance;
     document.getElementById('modalTemperature').textContent = planet.temperature;
     document.getElementById('modalAtmosphere').textContent = planet.atmosphere;
-    
+
     // Open the modal
     const planetModal = new bootstrap.Modal(document.getElementById('planetModal'));
     planetModal.show();
@@ -140,7 +143,7 @@ function initScrollAnimations() {
     planetCards.forEach((card, index) => {
         card.style.setProperty('--animation-order', index);
     });
-    
+
     // Implement scroll-triggered animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -152,7 +155,7 @@ function initScrollAnimations() {
     }, {
         threshold: 0.1
     });
-    
+
     // Observe section headings for animation
     document.querySelectorAll('section h2').forEach(heading => {
         observer.observe(heading);
@@ -163,10 +166,10 @@ function initScrollAnimations() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        
+
         if (targetElement) {
             window.scrollTo({
                 top: targetElement.offsetTop - 80, // Offset for fixed navbar
@@ -179,7 +182,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Add hover effect to navbar on scroll
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    
+
     if (window.scrollY > 50) {
         navbar.style.padding = '10px 0';
         navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
@@ -192,7 +195,7 @@ window.addEventListener('scroll', function() {
 // Add CSS class for animation when elements come into view
 document.addEventListener('scroll', function() {
     const animatedElements = document.querySelectorAll('.planet-card, .carousel, .hero-image');
-    
+
     animatedElements.forEach(element => {
         if (isElementInViewport(element) && !element.classList.contains('in-view')) {
             element.classList.add('in-view');
@@ -207,4 +210,37 @@ function isElementInViewport(element) {
         rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.bottom >= 0
     );
+}
+
+// Initialize theme toggle functionality
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Function to set theme
+    const setTheme = (isDark) => {
+        if (isDark) {
+            document.body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-theme');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    // Check for saved theme preference or default to light theme
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+        setTheme(true);
+    } else {
+        // Default to light theme
+        setTheme(false);
+    }
+
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', () => {
+        const isDarkTheme = document.body.classList.contains('dark-theme');
+        setTheme(!isDarkTheme);
+    });
 }
